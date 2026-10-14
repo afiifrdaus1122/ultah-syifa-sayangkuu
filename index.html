@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="description" content="A Little World Made for Syifa - Selamat Ulang Tahun ke-22 untuk Syifa Syauqina Aushaf dari Firdaus Mohammad.">
+  <meta name="theme-color" content="#FFF5F7">
+  <title>A Little World Made for Syifa 💗 | Happy 22nd Birthday</title>
+
+  <!-- Google Fonts Preconnect & Stylesheet -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css?v=2">
+</head>
+<body>
+
+  <!-- Background Ambient Canvas for Floating Hearts & Sparkles -->
+  <canvas id="ambient-canvas" aria-hidden="true"></canvas>
+
+  <!-- Audio Player with Multiple Fallbacks -->
+  <audio id="romantic-audio" preload="auto" loop>
+    <source src="assets/piano-romantic.mp3" type="audio/mpeg">
+    <source src="assets/piano-romantic.wav" type="audio/wav">
+  </audio>
+
+  <!-- Floating Floating Controls: Music Toggle & Progress Bar -->
+  <header class="floating-nav" id="floating-nav">
+    <div class="nav-container">
+      <div class="story-progress" id="story-progress" aria-label="Progress perjalanan cerita">
+        <div class="progress-bar-fill" id="progress-bar-fill"></div>
+        <span class="progress-text" id="progress-text">A Little World</span>
+      </div>
+      
+      <button id="music-toggle-btn" class="music-toggle-btn" aria-label="Nyalakan atau matikan musik latar" title="Nyalakan / Matikan Musik">
+        <span class="music-icon" id="music-icon">🎵</span>
+        <span class="music-label" id="music-label">Musik: Off</span>
+        <span class="music-visualizer" id="music-visualizer" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ==============================================
+       SECTION 1: OPENING SCREEN (FULLSCREEN)
+       ============================================== -->
+  <section class="section opening-section" id="opening-section" aria-label="Halaman Pembuka Kejutan">
+    <div class="opening-card glass-panel fade-in-up">
+      <div class="romantic-badge">
+        <span class="sparkle-icon">✨</span>
+        <span>A SPECIAL CELEBRATION</span>
+        <span class="sparkle-icon">✨</span>
+      </div>
+
+      <p class="opening-subhead">A LITTLE SURPRISE FOR SOMEONE SPECIAL</p>
+      
+      <h1 class="opening-title">
+        Happy Birthday, <span class="highlight-name">Syifa</span> <span class="heart-pulse">💗</span>
+      </h1>
+
+      <p class="opening-quote">
+        &ldquo;Someone as beautiful as you deserves a little world of her own.&rdquo;
+      </p>
+
+      <div class="opening-envelope-preview" aria-hidden="true">
+        <div class="mini-envelope">
+          <div class="mini-envelope-flap"></div>
+          <div class="mini-heart">💌</div>
+        </div>
+      </div>
+
+      <p class="opening-instruction">Tekan tombol di bawah untuk membuka duniamu:</p>
+
+      <button id="open-surprise-btn" class="btn btn-primary btn-pulse" aria-label="Buka kejutan ulang tahun">
+        <span class="btn-text">Open Your Surprise 💌</span>
+        <span class="btn-glow"></span>
+      </button>
+    </div>
+
+    <!-- Soft floating decor hearts in opening -->
+    <div class="opening-decorations" aria-hidden="true">
+      <span class="floating-symbol sym-1">🌸</span>
+      <span class="floating-symbol sym-2">✨</span>
+      <span class="floating-symbol sym-3">💖</span>
+      <span class="floating-symbol sym-4">🌷</span>
+      <span class="floating-symbol sym-5">✨</span>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       MAIN CONTENT CONTAINER (REVEALED AFTER OPENING)
+       ============================================== -->
+  <main id="main-content" class="main-content is-hidden">
+
+    <!-- ==============================================
+         SECTION 2: MAIN BIRTHDAY GREETING
+         ============================================== -->
+    <section class="section greeting-section" id="greeting-section" aria-label="Ucapan Utama Ulang Tahun">
+      <div class="container">
+        
+        <div class="greeting-header reveal-on-scroll">
+          <div class="crown-badge" aria-hidden="true">👑</div>
+          <p class="section-tag">FOR MY FAVORITE GIRL</p>
+          <h2 class="greeting-main-title">Happy Birthday, Sayangkuu Cantikku!</h2>
+          <p class="recipient-fullname">Syifa Syauqina Aushaf</p>
+        </div>
+
+        <div class="milestone-badge-wrapper reveal-on-scroll">
+          <div class="age-badge-circle">
+            <div class="badge-ring"></div>
+            <span class="badge-floral top-left">🌸</span>
+            <span class="badge-floral bottom-right">🌷</span>
+            <div class="age-number">22</div>
+            <div class="age-label">YEARS OF BLESSING</div>
+          </div>
+        </div>
+
+        <div class="greeting-body glass-card reveal-on-scroll">
+          <h3 class="greeting-subtitle">Happy 22nd Birthday, My Favorite Person.</h3>
+          <p class="greeting-paragraph">
+            Today is all about you, my love. A little reminder of how special you are and how grateful I am to have you in my life.
+          </p>
+          <div class="divider-hearts" aria-hidden="true">
+            <span>✧</span> <span>❤</span> <span>✧</span>
+          </div>
+          <p class="greeting-subtext">
+            Setiap detik bersamamu adalah berkah terindah. Terima kasih sudah selalu menjadi alasan aku bersyukur setiap hari.
+          </p>
+        </div>
+
+        <div class="section-nav-hint reveal-on-scroll">
+          <a href="#wishes-section" class="scroll-down-btn" aria-label="Lanjut ke bagian doa">
+            <span>All My Wishes for You</span>
+            <span class="arrow-down">↓</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==============================================
+         SECTION 3: PERSONAL BIRTHDAY WISHES
+         ============================================== -->
+    <section class="section wishes-section" id="wishes-section" aria-label="Doa-doa Ulang Tahun">
+      <div class="container">
+        
+        <div class="section-header reveal-on-scroll">
+          <span class="section-icon">🕊️</span>
+          <h2 class="section-title">All the Beautiful Things I Wish for You</h2>
+          <p class="section-subtitle">Empat doa tulus yang selalu aku langitkan untuk perempuan terhebatku</p>
+        </div>
+
+        <div class="wishes-grid">
+
+          <!-- Card 1: Health & Happiness -->
+          <article class="wish-card reveal-on-scroll" style="--card-delay: 0.1s">
+            <div class="wish-card-inner">
+              <div class="wish-icon-wrapper" aria-hidden="true">
+                <span class="wish-icon">💖</span>
+              </div>
+              <div class="wish-number">01</div>
+              <h3 class="wish-card-title">HEALTH &amp; HAPPINESS</h3>
+              <p class="wish-card-text">
+                &ldquo;Semoga kamu selalu diberikan kesehatan, umur yang panjang, hati yang tenang, dan kebahagiaan dalam setiap langkahmu.&rdquo;
+              </p>
+              <div class="wish-card-glow"></div>
+            </div>
+          </article>
+
+          <!-- Card 2: Your Dreams -->
+          <article class="wish-card reveal-on-scroll" style="--card-delay: 0.2s">
+            <div class="wish-card-inner">
+              <div class="wish-icon-wrapper" aria-hidden="true">
+                <span class="wish-icon">✨</span>
+              </div>
+              <div class="wish-number">02</div>
+              <h3 class="wish-card-title">YOUR DREAMS</h3>
+              <p class="wish-card-text">
+                &ldquo;Semoga di usia 22 tahun ini semua rencana, impian, dan keinginanmu satu per satu bisa tercapai. Semoga setiap usahamu membuahkan hasil yang indah.&rdquo;
+              </p>
+              <div class="wish-card-glow"></div>
+            </div>
+          </article>
+
+          <!-- Card 3: Your Future -->
+          <article class="wish-card reveal-on-scroll" style="--card-delay: 0.3s">
+            <div class="wish-card-inner">
+              <div class="wish-icon-wrapper" aria-hidden="true">
+                <span class="wish-icon">🌸</span>
+              </div>
+              <div class="wish-number">03</div>
+              <h3 class="wish-card-title">YOUR FUTURE</h3>
+              <p class="wish-card-text">
+                &ldquo;Semoga jalanmu selalu dimudahkan, rezekimu dilancarkan, dan kamu selalu dipertemukan dengan kesempatan baik yang membawa kamu semakin dekat dengan cita-citamu.&rdquo;
+              </p>
+              <div class="wish-card-glow"></div>
+            </div>
+          </article>
+
+          <!-- Card 4: Our Future -->
+          <article class="wish-card wish-card-highlight reveal-on-scroll" style="--card-delay: 0.4s">
+            <div class="wish-card-inner">
+              <div class="wish-icon-wrapper" aria-hidden="true">
+                <span class="wish-icon">💍</span>
+              </div>
+              <div class="wish-number">04</div>
+              <h3 class="wish-card-title">OUR FUTURE</h3>
+              <p class="wish-card-text">
+                &ldquo;Semoga hubungan kita selalu dijaga, dikuatkan ketika ada ujian, dan diberi kesempatan untuk terus bertumbuh bersama menuju masa depan yang kita impikan.&rdquo;
+              </p>
+              <div class="wish-card-glow"></div>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="section-nav-hint reveal-on-scroll">
+          <a href="#gallery-section" class="scroll-down-btn" aria-label="Lanjut ke galeri kenangan">
+            <span>Our Little Memories 📸</span>
+            <span class="arrow-down">↓</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==============================================
+         SECTION 4: OUR LITTLE MEMORIES — PHOTO GALLERY
+         ============================================== -->
+    <section class="section gallery-section" id="gallery-section" aria-label="Galeri Foto Kenangan">
+      <div class="container">
+        
+        <div class="section-header reveal-on-scroll">
+          <span class="section-icon">📸</span>
+          <h2 class="section-title">Our Little Memories</h2>
+          <p class="section-subtitle">Every picture holds a little piece of my heart.</p>
+          <div class="gallery-tip-badge">
+            <span>✨ Klik foto untuk melihat ukuran penuh &amp; cerita lengkap</span>
+          </div>
+        </div>
+
+        <!-- Polaroid Collage Grid (15 Photos Support) -->
+        <div class="polaroid-grid" id="polaroid-grid" aria-label="Koleksi foto polaroid">
+          <!-- Dynamically generated by script.js with rich fallback -->
+        </div>
+
+        <div class="section-nav-hint reveal-on-scroll">
+          <a href="#letter-section" class="scroll-down-btn" aria-label="Buka surat dari calon suami">
+            <span>A Letter From Your Future Husband 💍</span>
+            <span class="arrow-down">↓</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==============================================
+         SECTION 5: A LETTER FROM YOUR FUTURE HUSBAND
+         ============================================== -->
+    <section class="section letter-section" id="letter-section" aria-label="Surat Cinta">
+      <div class="container">
+        
+        <div class="section-header reveal-on-scroll">
+          <span class="section-icon">💍</span>
+          <h2 class="section-title">A Letter From Your Future Husband</h2>
+          <p class="section-subtitle">Read this whenever you need a reminder of how much you mean to me.</p>
+        </div>
+
+        <div class="letter-interaction-area">
+          
+          <!-- Closed Envelope Interactive Stage -->
+          <div class="envelope-wrapper" id="envelope-wrapper">
+            <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Klik amplop untuk membuka surat cinta">
+              <div class="envelope-front">
+                <div class="envelope-flap" id="envelope-flap"></div>
+                <div class="envelope-pocket"></div>
+                <div class="wax-seal" id="wax-seal" aria-hidden="true">
+                  <span class="wax-monogram">S&amp;F</span>
+                </div>
+              </div>
+              <div class="envelope-tag">
+                <span>To: Syifa Syauqina Aushaf 💖</span>
+              </div>
+            </div>
+
+            <button id="open-letter-btn" class="btn btn-secondary letter-trigger-btn">
+              <span class="btn-text">Open My Letter 💌</span>
+              <span class="btn-glow"></span>
+            </button>
+          </div>
+
+          <!-- Unfolded Letter Sheet Container -->
+          <div class="letter-sheet-container is-hidden" id="letter-sheet-container">
+            <div class="letter-sheet">
+              <div class="letter-sheet-decor-top" aria-hidden="true">
+                <span class="sheet-corner top-left">❧</span>
+                <span class="sheet-seal-mini">💍 A Promise of Love</span>
+                <span class="sheet-corner top-right">❧</span>
+              </div>
+
+              <!-- Fast Skip / Show Full Button -->
+              <div class="letter-action-bar">
+                <button id="skip-typing-btn" class="btn-text-only" title="Tampilkan seluruh teks langsung">
+                  ⏩ Show Full Letter
+                </button>
+              </div>
+
+              <div class="letter-content" id="letter-content" aria-live="polite">
+                <!-- Letter text typed by JavaScript -->
+              </div>
+
+              <div class="letter-signature-block" id="letter-signature-block">
+                <p class="signature-closing">With all my love,</p>
+                <p class="signature-name">Firdaus Mohammad</p>
+                <p class="signature-title">Your future husband, with a heart full of love for you. ❤️</p>
+              </div>
+
+              <div class="letter-sheet-decor-bottom" aria-hidden="true">
+                <span class="sheet-corner bottom-left">❧</span>
+                <span class="sheet-footer-date">Special Day • Forever in My Heart</span>
+                <span class="sheet-corner bottom-right">❧</span>
+              </div>
+            </div>
+
+            <div class="letter-bottom-actions">
+              <a href="#cake-section" id="continue-to-cake-btn" class="btn btn-primary btn-pulse">
+                <span>Continue to Your Birthday Surprise 🎂</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==============================================
+         SECTION 6: BIRTHDAY CAKE SURPRISE (THE CLIMAX)
+         ============================================== -->
+    <section class="section cake-section" id="cake-section" aria-label="Kejutan Kue Ulang Tahun">
+      <!-- Confetti Canvas for celebration burst -->
+      <canvas id="confetti-canvas" class="confetti-canvas" aria-hidden="true"></canvas>
+
+      <div class="container">
+        
+        <div class="section-header reveal-on-scroll">
+          <span class="section-icon">🎂</span>
+          <h2 class="section-title">Make a Wish, Sayang! 🎂</h2>
+          <p class="section-subtitle">Close your eyes, make a wish, and let your heart dream.</p>
+        </div>
+
+        <div class="cake-stage reveal-on-scroll">
+          
+          <!-- Cake Sparkles Ambient SVG -->
+          <div class="cake-sparkles-ambient" aria-hidden="true">
+            <span class="cake-sparkle sp-1">✨</span>
+            <span class="cake-sparkle sp-2">⭐</span>
+            <span class="cake-sparkle sp-3">✨</span>
+            <span class="cake-sparkle sp-4">🌸</span>
+            <span class="cake-sparkle sp-5">✨</span>
+          </div>
+
+          <!-- Interactive 2-Tier Birthday Cake -->
+          <div class="birthday-cake" id="birthday-cake" aria-label="Ilustrasi Kue Ulang Tahun dengan Lilin Menyala">
+            
+            <!-- Number 22 Cake Topper -->
+            <div class="cake-topper" id="cake-topper" aria-hidden="true">
+              <span class="topper-number">22</span>
+              <span class="topper-crown">👑</span>
+            </div>
+
+            <!-- Candles Row -->
+            <div class="candles-container" id="candles-container">
+              <div class="candle candle-1">
+                <div class="flame" id="flame-1"><div class="flame-inner"></div></div>
+                <div class="candle-smoke is-hidden" id="smoke-1"></div>
+                <div class="candle-stick"></div>
+              </div>
+              <div class="candle candle-2 candle-main">
+                <div class="flame" id="flame-2"><div class="flame-inner"></div></div>
+                <div class="candle-smoke is-hidden" id="smoke-2"></div>
+                <div class="candle-stick"></div>
+              </div>
+              <div class="candle candle-3">
+                <div class="flame" id="flame-3"><div class="flame-inner"></div></div>
+                <div class="candle-smoke is-hidden" id="smoke-3"></div>
+                <div class="candle-stick"></div>
+              </div>
+            </div>
+
+            <!-- Top Cake Tier -->
+            <div class="cake-tier tier-top">
+              <div class="cake-frosting-top">
+                <span class="pearl p1"></span>
+                <span class="pearl p2"></span>
+                <span class="pearl p3"></span>
+                <span class="pearl p4"></span>
+                <span class="pearl p5"></span>
+              </div>
+              <div class="drip-row">
+                <span class="drip d1"></span>
+                <span class="drip d2"></span>
+                <span class="drip d3"></span>
+                <span class="drip d4"></span>
+                <span class="drip d5"></span>
+              </div>
+              <div class="tier-body">
+                <span class="tier-heart">💖</span>
+              </div>
+            </div>
+
+            <!-- Bottom Cake Tier -->
+            <div class="cake-tier tier-bottom">
+              <div class="cake-frosting-bottom">
+                <span class="berry b1">🍓</span>
+                <span class="berry b2">🍓</span>
+                <span class="berry b3">🍓</span>
+                <span class="berry b4">🍓</span>
+              </div>
+              <div class="drip-row drip-bottom">
+                <span class="drip db1"></span>
+                <span class="drip db2"></span>
+                <span class="drip db3"></span>
+                <span class="drip db4"></span>
+                <span class="drip db5"></span>
+                <span class="drip db6"></span>
+              </div>
+              <div class="tier-body tier-body-large">
+                <span class="tier-banner">Syifa's 22nd Birthday</span>
+              </div>
+            </div>
+
+            <!-- Cake Plate Stand -->
+            <div class="cake-plate"></div>
+            <div class="cake-stand"></div>
+          </div>
+
+          <!-- Blow Wind Effect Overlay -->
+          <div class="blow-wind is-hidden" id="blow-wind" aria-hidden="true">
+            <span class="wind-particle wp-1">💨</span>
+            <span class="wind-particle wp-2">💨</span>
+          </div>
+
+          <!-- Post-Blow Celebration Wish Card -->
+          <div class="wish-granted-banner is-hidden" id="wish-granted-banner" role="status" aria-live="assertive">
+            <div class="granted-badge">🎉 WISH SENT TO THE STARS 🎉</div>
+            <h3 class="granted-title">Your wish is on its way, my love!</h3>
+            <p class="granted-text">
+              Semoga setiap impian di dalam hatimu dikabulkan oleh Allah SWT. Aku akan selalu ada di sini untuk mendampingi dan merayakan setiap langkahmu.
+            </p>
+            <div class="granted-hearts" aria-hidden="true">💖 🌸 💖</div>
+          </div>
+
+          <!-- Action Buttons for Cake -->
+          <div class="cake-actions">
+            <button id="blow-candles-btn" class="btn btn-primary btn-pulse btn-lg">
+              <span class="btn-text">Blow the Candles ✨</span>
+              <span class="btn-glow"></span>
+            </button>
+
+            <button id="relight-candles-btn" class="btn btn-secondary is-hidden">
+              <span class="btn-text">Celebrate Again 🔁</span>
+            </button>
+          </div>
+
+          <div class="section-nav-hint reveal-on-scroll">
+            <a href="#final-message-section" class="scroll-down-btn" aria-label="Lanjut ke pesan cinta terakhir">
+              <span>Read My Final Love Message 💌</span>
+              <span class="arrow-down">↓</span>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==============================================
+         SECTION 7: FINAL LOVE MESSAGE
+         ============================================== -->
+    <section class="section final-section" id="final-message-section" aria-label="Pesan Cinta Penutup">
+      <div class="container">
+        
+        <div class="final-card glass-panel reveal-on-scroll">
+          <div class="final-heart-icon" aria-hidden="true">💍</div>
+
+          <h2 class="final-main-title">Happy Birthday, My Love.</h2>
+          <p class="final-lead-quote">
+            &ldquo;May this new chapter bring you closer to every beautiful thing you've been praying for.&rdquo;
+          </p>
+
+          <div class="divider-hearts" aria-hidden="true">
+            <span>✧</span> <span>❤</span> <span>✧</span>
+          </div>
+
+          <div class="final-paragraphs">
+            <p>
+              Semoga kamu selalu bahagia, sayangku. Semoga segala doa baikmu menemukan jalannya, dan semoga aku juga diberi kesempatan untuk menjadi bagian dari masa depan yang kamu impikan.
+            </p>
+
+            <blockquote class="future-husband-quote">
+              &ldquo;One day, I hope I won't just celebrate your birthday as your boyfriend. I hope I'll be right beside you as your husband.&rdquo;
+            </blockquote>
+
+            <p>
+              Until then, I'll keep praying for us, growing for us, and loving you the best way I can.
+            </p>
+          </div>
+
+          <div class="final-signature">
+            <p class="final-with-love">With love,</p>
+            <p class="final-author">Firdaus ❤️</p>
+            <span class="final-date">A Little World Made for Syifa • 22nd Birthday</span>
+          </div>
+
+          <!-- Final Interactive Buttons -->
+          <div class="final-actions">
+            <button id="replay-story-btn" class="btn btn-primary" aria-label="Ulangi cerita dari awal">
+              <span>Replay Our Story 🔄</span>
+            </button>
+            <button id="back-to-memories-btn" class="btn btn-secondary" aria-label="Kembali ke galeri foto kenangan">
+              <span>Back to Our Memories 📸</span>
+            </button>
+          </div>
+
+        </div>
+
+        <footer class="site-footer">
+          <p>Created with endless love by Firdaus for Syifa Syauqina Aushaf 💖</p>
+          <p class="footer-subtext">&copy; 2026 A Little World Made for Syifa. All rights reserved for us.</p>
+        </footer>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==============================================
+       LIGHTBOX MODAL FOR PHOTO GALLERY
+       ============================================== -->
+  <div id="lightbox-modal" class="lightbox-modal" role="dialog" aria-modal="true" aria-label="Tampilan foto besar" aria-hidden="true">
+    <div class="lightbox-overlay" id="lightbox-overlay"></div>
+    <div class="lightbox-dialog">
+      
+      <button id="lightbox-close-btn" class="lightbox-close-btn" aria-label="Tutup foto (Escape)">&times;</button>
+      
+      <div class="lightbox-body">
+        <div class="lightbox-media-wrapper" id="lightbox-media-wrapper">
+          <img id="lightbox-img" class="lightbox-img" src="" alt="Foto Kenangan Syifa dan Firdaus" loading="eager">
+          <!-- Fallback placeholder graphic inside lightbox if image missing -->
+          <div id="lightbox-placeholder" class="lightbox-placeholder is-hidden"></div>
+        </div>
+
+        <div class="lightbox-caption-area">
+          <div class="lightbox-counter" id="lightbox-counter">1 / 15</div>
+          <h4 class="lightbox-title" id="lightbox-title">Memory Title</h4>
+          <p class="lightbox-desc" id="lightbox-desc">Memory Caption</p>
+          <p class="lightbox-filehint" id="lightbox-filehint">File: images/foto1.jpg</p>
+        </div>
+      </div>
+
+      <button id="lightbox-prev-btn" class="lightbox-nav-btn prev-btn" aria-label="Foto Sebelumnya">&#10094;</button>
+      <button id="lightbox-next-btn" class="lightbox-nav-btn next-btn" aria-label="Foto Selanjutnya">&#10095;</button>
+
+    </div>
+  </div>
+
+  <!-- Sparkle Burst Container for Interactive Clicks -->
+  <div id="sparkle-container" class="sparkle-container" aria-hidden="true"></div>
+
+  <!-- Main JavaScript File -->
+  <script src="script.js?v=2"></script>
+</body>
+</html>
